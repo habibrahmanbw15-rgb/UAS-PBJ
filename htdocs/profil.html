@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMRACE.ID | Profile</title>
+    <link rel="stylesheet" href="style-profile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+            *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        }
+        body{
+            font-family:'Montserrat',sans-serif;
+            background:#111;
+            color:white;
+        }
+        .profile{
+            display:flex;
+            min-height:100vh;
+        }
+        .left-side{
+            width:60%;
+            position:relative;
+        }
+        .left-side img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+        }
+        .overlay{
+            position:absolute;
+            inset:0;
+            background:linear-gradient(
+                90deg,
+                rgba(0,0,0,.15),
+                rgba(0,0,0,.55)
+            );
+        }
+
+        .right-side{
+            width:50%;
+            background:#161616;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            padding:60px;
+        }
+        .right-side small{
+            color:#ff6a00;
+            letter-spacing:4px;
+            font-weight:700;
+        }
+        .right-side h1{
+            margin-top:10px;
+            margin-bottom:25px;
+            font-size:55px;
+            font-weight:800;
+        }
+        .right-side span{
+            color:#ff6a00;
+        }
+        .right-side>p{
+            color:#bdbdbd;
+            line-height:1.8;
+            margin-bottom:40px;
+        }
+        .feature{
+            display:flex;
+            flex-direction:column;
+            gap:18px;
+            margin-bottom:45px;
+        }
+        .card{
+            display:flex;
+            align-items:center;
+            gap:20px;
+            background:#232323;
+            border:1px solid #2d2d2d;
+            border-radius:15px;
+            padding:18px;
+            transition:.3s;
+        }
+        .card:hover{
+            transform:translateX(10px);
+            background:#ff6a00;
+        }
+        .card h3{
+            margin-bottom:5px;
+            font-size:18px;
+        }
+        .card p{
+            font-size:14px;
+            line-height:1.5;
+        }
+
+        .button{
+            text-decoration:none;
+            text-align:center;
+            color:white;
+            background:#ff6a00;
+            padding:18px;
+            border-radius:12px;
+            font-weight:700;
+            letter-spacing:2px;
+            transition:.3s;
+        }
+        .button:hover{
+            background:white;
+            color:#ff6a00;
+        }
+
+        @media(max-width:900px){
+        .profile{
+            flex-direction:column;
+        }
+        .overlay{
+            background-image: url(https://i.pinimg.com/736x/49/6b/b0/496bb089567c7463c8e50812f3d3005f.jpg);
+            background-position: center;
+            background-size: cover;
+        }
+        .left-side{
+            width:100%;
+            height:350px;
+        }
+        .right-side{
+            width:100%;
+            padding:40px;
+        }
+        .right-side h1{
+            font-size:38px;
+        }
+    }
+
+        /* Kontainer Utama Slider */
+    .slider-container {
+      width: 100%;
+      overflow: hidden; /* Menyembunyikan kartu yang berada di luar layar */
+      padding: 40px 0;
+      position: relative;
+    }
+
+    /* Jalur Animasi (Track) */
+    .slider-track {
+      display: flex;
+      /* Lebar total disesuaikan dengan jumlah kartu: (Lebar kartu + Margin) * Total Kartu */
+      /* Di sini kita menduplikasi 5 kartu menjadi 10 agar efek scroll tidak terputus */
+      width: calc((280px + 40px) * 10); 
+      
+      /* Animasi Fade In (Muncul dari 0%) dan Auto Scroll */
+      animation: 
+        fadeIn 2.5s ease-out forwards, 
+        scrollInfinite 25s linear infinite;
+    }
+
+    /* Gaya Setiap Kartu */
+    .card2 {
+      width: 280px;
+      height: 420px; /* Tinggi disesuaikan agar pas dengan elemen gambar */
+      background: #2b1515;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 0 20px; /* Jarak antar kartu (total margin kiri + kanan = 40px) */
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: #f8fafc;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    /* Efek Interaksi Ringan Saat Hover */
+    .card2:hover {
+      transform: translateY(-5px);
+      border-color: #FF5722; /* Warna highlight biru saat diarahkan kursor */
+    }
+
+    /* Gaya untuk Foto/Gambar di dalam Kartu */
+    .card2-image {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 12px;
+      background-color: #334155; /* Background abu-abu sebagai placeholder jika src kosong */
+      border: 1px dashed #475569; /* Garis putus-putus penanda area foto */
+      box-sizing: border-box;
+      margin-bottom: 12px;
+    }
+
+    .card2-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+      color: #FF5722; /* Warna aksen biru cerah */
+    }
+
+    .card2-desc {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #cbd5e1;
+      flex-grow: 1;
+      margin: 0;
+    }
+
+    .card2-category {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #94a3b8;
+      margin-top: 12px;
+      border-top: 1px solid #334155;
+      padding-top: 10px;
+    }
+
+    /* Animasi berhenti saat kartu diklik & ditahan */
+    .card:active ~ .card,
+    .slider-track:has(.card:active) {
+    animation-play-state: paused;
+    }
+        /* Animasi akan berhenti (pause) saat area slider didekati kursor */
+    .slider-container:hover .slider-track {
+    animation-play-state: paused;
+    }
+
+    /* --- ANIMASI KEYFRAMES --- */
+
+    /* 1. Animasi Masuk Awal (Fade In dari Opacity 0%) */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* 2. Animasi Auto Scroll ke Kiri secara Infinite */
+    @keyframes scrollInfinite {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        /* Menggeser sejauh setengah dari lebar track (5 kartu pertama) */
+        /* Lebar 1 kartu + margin = 280px + 40px = 320px. 5 kartu = 1600px */
+        transform: translateX(-1600px); 
+      }
+    }
+    </style>
+
+</head>
+
+<body>
+<section class="profile">
+    <div class="left-side">
+        <img src="mobile.jpeg" alt="Porsche GT3 RS">
+        <div class="overlay"></div>
+    </div>
+
+    <div class="right-side">
+        <small>ABOUT US</small>
+        <h1>SIM<span>RACE</span>.ID</h1>
+        <p>
+            SIMRACE.ID merupakan portal informasi yang membahas dunia
+            Sim Racing, Simulator Hardware, Motorsport Technology,
+            serta menjadi wadah komunitas Sim Racer Indonesia.
+        </p>
+
+        <div class="feature">
+
+            <div class="card">
+                🏎
+                <div>
+                    <h3>Hardware Review</h3>
+                    <p>Review Steering Wheel, Pedal, Cockpit dan Direct Drive.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                ⚙
+                <div>
+                    <h3>Simulator Setup</h3>
+                    <p>Tips setting Force Feedback, Pedal dan Wheelbase.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                👥
+                <div>
+                    <h3>Community</h3>
+                    <p>Bergabung dengan komunitas Sim Racing Indonesia.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                🏁
+                <div>
+                    <h3>Motorsport</h3>
+                    <p>Informasi mobil balap dan teknologi motorsport.</p>
+                </div>
+            </div>
+
+            <section>
+      <!-- Kontainer Utama Slider -->
+    <div class="slider-container">
+        <div class="slider-track">
+
+        <!-- KARTU 1: Komponen Mesin -->
+        <div class="card2">
+            <img class="card2-image" src="componen.jpeg" alt="Mesin Turbocharger">
+            <h3 class="card2-title">Mesin Turbocharger</h3>
+            <p class="card2-desc">Komponen induksi paksa yang meningkatkan efisiensi dan performa mesin dengan mengalirkan udara ekstra ke ruang bakar menggunakan gas buang.</p>
+            <div class="card2-category">Komponen</div>
+        </div>  
+        <!-- KARTU 2: Suspensi -->
+        <div class="card2">
+            <img class="card2-image" src="bengkel.jpeg" alt="Suspensi Coilover">
+            <h3 class="card2-title">Teknical Componen</h3>
+            <p class="card2-desc">Banyak penjual maupun penyedia komponen dikomunitas kami maupun relasi yang bisa anda mamfaatkan.</p>
+            <div class="card2-category">Komponen</div>
+        </div>  
+        <!-- KARTU 3: Komunitas -->
+        <div class="card2">
+            <img class="card2-image" src="comunity.jpeg" alt="Kopi Darat">
+            <h3 class="card2-title">Kopi Darat (Kopdar)</h3>
+            <p class="card2-desc">Ajang berkumpulnya para anggota komunitas otomotif untuk berbagi tips perawatan, memamerkan modifikasi, dan mempererat tali persaudaraan.</p>
+            <div class="card2-category">Komunitas</div>
+        </div>  
+        <!-- KARTU 4: Teknologi -->
+        <div class="card2">
+            <img class="card2-image" src="ecutuning.jpeg" alt="ECU Tuning">
+            <h3 class="card2-title">ECU Tuning</h3>
+            <p class="card2-desc">Proses pemetaan ulang program komputer mobil (Engine Control Unit) guna mengoptimalkan semburan bahan bakar, pengapian, dan boost turbo.</p>
+            <div class="card2-category">Teknologi</div>
+        </div>  
+        <!-- KARTU 5: Kegiatan -->
+        <div class="card2">
+            <img class="card2-image" src="vocation.jpeg" alt="Touring Antar Kota">
+            <h3 class="card2-title">Touring Antar Kota</h3>
+            <p class="card2-desc">Perjalanan jarak jauh bersama seluruh anggota komunitas untuk menguji ketangguhan kendaraan sekaligus mengeksplorasi destinasi wisata baru.</p>
+            <div class="card2-category">Kegiatan</div>
+        </div>  
+        
+        <!-- Duplikat Kartu 1 -->
+        <div class="card2">
+            <img class="card2-image" src="componen.jpeg" alt="Mesin Turbocharger">
+            <h3 class="card2-title">Mesin Turbocharger</h3>
+            <p class="card2-desc">Komponen induksi paksa yang meningkatkan efisiensi dan performa mesin dengan mengalirkan udara ekstra ke ruang bakar menggunakan gas buang.</p>
+            <div class="card2-category">Komponen</div>
+        </div>  
+        <!-- Duplikat Kartu 2 -->
+        <div class="card2">
+            <img class="card2-image" src="bengkel.jpeg" alt="Suspensi Coilover">
+            <h3 class="card2-title">Teknical Componen</h3>
+            <p class="card2-desc">Banyak penjual maupun penyedia komponen dikomunitas kami maupun relasi yang bisa anda mamfaatkan.</p>
+            <div class="card2-category">Komponen</div>
+        </div>  
+    </div>
+    </div>
+</section>
+        </div>
+        <a href="index.html" class="button">
+            BACK TO HOME
+        </a>
+    </div>
+
+</section>
+
+
+</body>
+
+</html>
